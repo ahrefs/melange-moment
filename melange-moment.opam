@@ -3,6 +3,7 @@ synopsis: "Melange bindings for Moment.js."
 maintainer: "Ahrefs"
 authors: "Jiayu Liu <jimexist@gmail.com>"
 license: "MIT"
+tags: ["melange" "org:ahrefs"]
 homepage: "https://github.com/ahrefs/melange-moment"
 bug-reports: "https://github.com/ahrefs/melange-moment"
 depends: [
