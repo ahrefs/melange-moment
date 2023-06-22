@@ -1,0 +1,5 @@
+(melange.emit
+ (target test)
+ (alias test)
+ (libraries melange-moment melange-jest.jest)
+ (preprocess (pps melange.ppx)))

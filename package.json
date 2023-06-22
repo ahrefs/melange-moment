@@ -1,33 +1,5 @@
 {
-  "name": "bs-moment",
-  "version": "0.8.0",
-  "description": "BuckleScript bindings for Moment.js",
-  "main": "lib/js/src/MomentRe.js",
-  "repository": "git@github.com:Jimexist/bs-moment.git",
-  "author": "Jiayu Liu <jimexist@gmail.com>",
-  "license": "MIT",
-  "keywords": [
-    "reason",
-    "bucklescript",
-    "moment",
-    "date",
-    "time"
-  ],
-  "scripts": {
-    "build": "bsb -make-world",
-    "start": "bsb -make-world -w",
-    "clean": "bsb -clean-world",
-    "pretest": "npm run build",
-    "test": "jest",
-    "prepublish": "npm run clean && npm run build"
-  },
-  "peerDependencies": {
-    "moment": "^2.26.0"
-  },
   "devDependencies": {
-    "@glennsl/bs-jest": "^0.7.0",
-    "bs-platform": "^9.0.2",
-    "husky": "^4.2.5",
     "jest": "^26.0.1",
     "moment": "^2.26.0"
   }

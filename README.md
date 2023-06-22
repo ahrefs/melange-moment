@@ -1,13 +1,39 @@
-# bs-moment
+# melange-moment
 
-[![CI](https://github.com/Jimexist/bs-moment/actions/workflows/ci.yml/badge.svg)](https://github.com/Jimexist/bs-moment/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/bs-moment.svg)](https://www.npmjs.com/package/bs-moment)
-
-[BuckleScript](https://github.com/bloomberg/bucklescript) bindings for [Moment.js](https://momentjs.com/).
+[Melange](https://melange.re) bindings for [Moment.js](https://momentjs.com/).
 
 ## Status
 
 This package is still 🚧 WIP 🚧, but new bindings are added _as needed_ instead of actively. Feel free to create an issue or PR if you find anything missing.
+
+## Installation
+
+Install [opam](https://opam.ocaml.org/) package manager.
+
+Then:
+
+```
+opam pin add melange-moment.dev git+https://github.com/ahrefs/melange-moment.git#main
+```
+
+The bindings support the following versions of the `moment`
+npm package, which should be installed separately:
+
+```json
+  "dependencies": {
+    "moment": "^2.26.0"
+  }
+```
+
+## Setup
+
+Add `melange-moment` to the `libraries` field in your `dune` file:
+
+```dune
+; ...
+  (libraries melange-moment)
+; ...
+```
 
 ## Mutations
 
