@@ -2,6 +2,8 @@
 
 [Melange](https://melange.re) bindings for [Moment.js](https://momentjs.com/).
 
+Based on [bs-moment](https://github.com/Jimexist/bs-moment).
+
 ## Status
 
 This package is still 🚧 WIP 🚧, but new bindings are added _as needed_ instead of actively. Feel free to create an issue or PR if you find anything missing.
