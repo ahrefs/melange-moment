@@ -23,7 +23,6 @@ module Duration = {
   [@bs.send.pipe: t]
   external asUnitOfTime:
     (
-    [@bs.string]
     [
       | `years
       | `quarters
@@ -44,7 +43,7 @@ module Duration = {
 external duration:
   (
     float,
-    [@bs.string] [
+    [
       | `years
       | `quarters
       | `months
@@ -83,7 +82,7 @@ module Moment = {
   external mutableStartOf:
     (
       t,
-      [@bs.string] [
+      [
         | `year
         | `quarter
         | `month
@@ -107,7 +106,7 @@ module Moment = {
   external mutableEndOf:
     (
       t,
-      [@bs.string] [
+      [
         | `year
         | `quarter
         | `month
@@ -226,7 +225,6 @@ module Moment = {
   [@bs.send.pipe: t]
   external get:
     (
-    [@bs.string]
     [
       | `year
       | `quarter
@@ -260,7 +258,7 @@ module Moment = {
     (
       t,
       t,
-      [@bs.string] [
+      [
         | `year
         | `month
         | `week
@@ -278,7 +276,7 @@ module Moment = {
     (
       t,
       t,
-      [@bs.string] [
+      [
         | `year
         | `month
         | `week
@@ -294,7 +292,7 @@ module Moment = {
   [@bs.send] external isSame: (t, t) => bool = "isSame";
   [@bs.send]
   external isSameWithGranularity:
-    (t, t, [@bs.string] [ | `year | `month | `day]) => bool =
+    (t, t, [ | `year | `month | `day]) => bool =
     "isSame";
   [@bs.send] external isSameOrBefore: (t, t) => bool = "isSameOrBefore";
   [@bs.send] external isSameOrAfter: (t, t) => bool = "isSameOrAfter";
@@ -355,7 +353,7 @@ external diff:
   (
     Moment.t,
     Moment.t,
-    [@bs.string] [
+    [
       | `years
       | `quarters
       | `months
@@ -375,7 +373,7 @@ external diffWithPrecision:
   (
     Moment.t,
     Moment.t,
-    [@bs.string] [
+    [
       | `years
       | `quarters
       | `months

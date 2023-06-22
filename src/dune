@@ -1,0 +1,6 @@
+(dirs :standard __tests__)
+
+(library
+ (name momentRe)
+ (public_name melange-moment)
+ (modes melange))
