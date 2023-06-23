@@ -3,4 +3,6 @@
 (library
  (name momentRe)
  (public_name melange-moment)
- (modes melange))
+ (modes melange)
+ (preprocess
+  (pps melange.ppx)))
