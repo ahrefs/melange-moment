@@ -307,7 +307,7 @@ module Moment = {
   [@bs.send.pipe: t] external mutableLocale: string => t = "locale";
   let locale = (locale, moment) => {
     let clone = clone(moment);
-    mutableLocale(locale, clone);
+    mutableLocale(locale, clone)->ignore;
     clone;
   };
   [@bs.send]
