@@ -654,14 +654,14 @@ let () =
           expect(momentNow() |> Moment.defaultUtc |> Moment.isValid)
           |> toBe(true)
         );
-        test("#mutableLocale", () =>
+        test("#mutableLocale", () => {
+          let original = moment("2018-01-01 00:00:00Z");
+          original |> Moment.mutableLocale("da_DK");
           expect(
-            moment("2018-01-01 00:00:00Z")
-            |> Moment.mutableLocale("da_DK")
-            |> Moment.format("MMMM Do YYYY"),
+            original |> Moment.format("MMMM Do YYYY")
           )
           |> toBe("januar 1. 2018")
-        );
+        });
         test("#locale", () =>
           expect(
             moment("2018-01-01 00:00:00Z")
@@ -672,7 +672,7 @@ let () =
         );
         test("#locale doesn't mutate input", () => {
           let original = moment("2018-01-01 00:00:00Z");
-          original |> Moment.locale("da_DK")
+          original |> Moment.locale("da_DK") |> ignore;
           expect(
             original |> Moment.format("MMMM Do YYYY")
           )
