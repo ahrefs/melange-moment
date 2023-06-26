@@ -304,10 +304,10 @@ module Moment = {
   [@bs.send.pipe: t] external defaultFormat: string = "format";
   [@bs.send.pipe: t] external utc: string => t = "utc";
   [@bs.send.pipe: t] external defaultUtc: t = "utc";
-  [@bs.send.pipe: t] external mutableLocale: string => t = "locale";
+  [@bs.send.pipe: t] external mutableLocale: string => unit = "locale";
   let locale = (locale, moment) => {
     let clone = clone(moment);
-    mutableLocale(locale, clone)->ignore;
+    mutableLocale(locale, clone);
     clone;
   };
   [@bs.send]
