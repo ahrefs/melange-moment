@@ -1,5 +1,5 @@
 opam-version: "2.0"
-synopsis: "Melange bindings for Moment.js."
+synopsis: "Melange bindings for Moment.js"
 maintainer: "Ahrefs"
 authors: "Jiayu Liu <jimexist@gmail.com>"
 license: "MIT"
@@ -8,10 +8,11 @@ homepage: "https://github.com/ahrefs/melange-moment"
 bug-reports: "https://github.com/ahrefs/melange-moment"
 depends: [
   "dune" {>= "3.8"}
-  "ocaml" {>= "4.14.0"}
-  "melange" {>= "1.0.0"}
+  "ocaml"
+  "melange" {>= "2.0.0"}
   "reason"
   "melange-jest" {with-test}
+  "opam-check-npm-deps" {with-test} # todo: use with-dev-setup once opam 2.2 is out
   "odoc" {with-doc}
 ]
 build: [
@@ -24,12 +25,17 @@ build: [
     "-j"
     jobs
     "@install"
-    "@runtest" {with-test}
     "@doc" {with-doc}
   ]
 ]
 dev-repo: "git+https://github.com/ahrefs/melange-moment.git"
-
+depexts: [
+  ["moment"] {npm-version = "^2.26.0"}
+]
 pin-depends: [
-  [ "melange-jest.dev" "git+https://github.com/melange-community/melange-jest.git#8d23fb39db19151cb3263d0daedb7b2a7869ce62" ]
+  [ "melange.2.0.0"         "git+https://github.com/melange-re/melange.git#e114ad55d185badeb32b3c766c9ab547495eac1b" ]
+  [ "reason.3.10.0"         "git+https://github.com/reasonml/reason.git#972261dab3b651ff8ab9b8b9fcc32940595073dc" ]
+  [ "melange-jest.dev"      "git+https://github.com/melange-community/melange-jest.git#acb6ef50beef3c486805d616b90aa7b56b51172d" ]
+  [ "melange-webapi.dev"    "git+https://github.com/melange-community/melange-webapi.git#96dc1e2a867624d18050fad25cf1c71af7a098e1" ]
+  [ "melange-fetch.dev"     "git+https://github.com/melange-community/melange-fetch.git#796f941b6b85eb7e6182ac6e4f40708bfde7a9a9" ]
 ]
