@@ -2,7 +2,7 @@ open Jest;
 
 open MomentRe;
 
-let isJsDateValid: Js.Date.t => bool = [%bs.raw
+let isJsDateValid: Js.Date.t => bool = [%mel.raw
   {|
   function(date) {
     return (date instanceof Date && !isNaN(date.valueOf())) ? true : false;
@@ -645,9 +645,7 @@ let () =
           |> toContainString("2016-01-01")
         );
         test("#utc", () =>
-          expect(
-            momentNow() |> Moment.utc("2018-01-22") |> Moment.isValid,
-          )
+          expect(momentNow() |> Moment.utc("2018-01-22") |> Moment.isValid)
           |> toBe(true)
         );
         test("#defaultUtc", () =>
@@ -657,10 +655,8 @@ let () =
         test("#mutableLocale", () => {
           let original = moment("2018-01-01 00:00:00Z");
           original |> Moment.mutableLocale("da_DK");
-          expect(
-            original |> Moment.format("MMMM Do YYYY")
-          )
-          |> toBe("januar 1. 2018")
+          expect(original |> Moment.format("MMMM Do YYYY"))
+          |> toBe("januar 1. 2018");
         });
         test("#locale", () =>
           expect(
@@ -673,10 +669,8 @@ let () =
         test("#locale doesn't mutate input", () => {
           let original = moment("2018-01-01 00:00:00Z");
           original |> Moment.locale("da_DK") |> ignore;
-          expect(
-            original |> Moment.format("MMMM Do YYYY")
-          )
-          |> toBe("January 1st 2018")
+          expect(original |> Moment.format("MMMM Do YYYY"))
+          |> toBe("January 1st 2018");
         });
         test(
           "#valueOf", /* TODO: float? */
@@ -686,12 +680,13 @@ let () =
         );
         describe("#toJSON", () => {
           test("valid", () =>
-            expect(moment("2016-01-01") |> Moment.toJSON |> Belt.Option.getExn)
+            expect(
+              moment("2016-01-01") |> Moment.toJSON |> Belt.Option.getExn,
+            )
             |> toContainString("000Z")
           );
           test("invalid", () =>
-            expect(moment("9999-99-99") |> Moment.toJSON)
-            |> toBe(None)
+            expect(moment("9999-99-99") |> Moment.toJSON) |> toBe(None)
           );
         });
         test("#toDate", () =>
@@ -708,7 +703,8 @@ let () =
             |> toBe("2017-03-06T21:22:23.000Z")
           );
           test("keepOffset", () =>
-            moment("6 Mar 2017 21:22:23 GMT") |> Moment.toISOString(~keepOffset=true)
+            moment("6 Mar 2017 21:22:23 GMT")
+            |> Moment.toISOString(~keepOffset=true)
             |> Js.String.includes("000Z")
             |> expect
             |> toBe(false)

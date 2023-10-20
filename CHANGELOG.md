@@ -1,4 +1,6 @@
-# Change Log
+## 0.3.0 (2023-10-20)
+
+Migrated to Melange v2.
 
 ## [v0.2.3](https://github.com/reasonml-community/bs-moment/tree/v0.2.3) (2018-02-08)
 [Full Changelog](https://github.com/reasonml-community/bs-moment/compare/v0.2.2...v0.2.3)

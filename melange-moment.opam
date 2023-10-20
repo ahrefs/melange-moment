@@ -1,5 +1,5 @@
 opam-version: "2.0"
-synopsis: "Melange bindings for Moment.js."
+synopsis: "Melange bindings for Moment.js"
 maintainer: "Ahrefs"
 authors: "Jiayu Liu <jimexist@gmail.com>"
 license: "MIT"
@@ -8,10 +8,11 @@ homepage: "https://github.com/ahrefs/melange-moment"
 bug-reports: "https://github.com/ahrefs/melange-moment"
 depends: [
   "dune" {>= "3.8"}
-  "ocaml" {>= "4.14.0"}
-  "melange" {>= "1.0.0"}
+  "ocaml"
+  "melange" {>= "2.0.0"}
   "reason"
   "melange-jest" {with-test}
+  "opam-check-npm-deps" {with-test} # todo: use with-dev-setup once opam 2.2 is out
   "odoc" {with-doc}
 ]
 build: [
@@ -29,7 +30,6 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/ahrefs/melange-moment.git"
-
-pin-depends: [
-  [ "melange-jest.dev" "git+https://github.com/melange-community/melange-jest.git#8d23fb39db19151cb3263d0daedb7b2a7869ce62" ]
+depexts: [
+  ["moment"] {npm-version = "^2.26.0"}
 ]
