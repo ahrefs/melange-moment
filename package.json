@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "jest": "^26.0.1",
+    "@testing-library/jest-dom": "^5.10.0",
     "moment": "^2.26.0"
   }
 }
