@@ -14,8 +14,8 @@ Install [opam](https://opam.ocaml.org/) package manager.
 
 Then:
 
-```
-opam pin add melange-moment.dev git+https://github.com/ahrefs/melange-moment.git#main
+```bash
+opam install melange-moment
 ```
 
 The bindings support the following versions of the `moment`
@@ -31,7 +31,7 @@ npm package, which should be installed separately:
 
 Add `melange-moment` to the `libraries` field in your `dune` file:
 
-```dune
+```clojure
 ; ...
   (libraries melange-moment)
 ; ...
