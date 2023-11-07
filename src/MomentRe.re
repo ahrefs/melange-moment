@@ -308,21 +308,21 @@ module Moment = {
 };
 
 /* parse */
-[@mel.module] external momentNow: unit => Moment.t = "moment";
+[@mel.module "moment"] external momentNow: unit => Moment.t = "default";
 
-[@mel.module] external momentDefaultFormat: string => Moment.t = "moment";
+[@mel.module "moment"] external momentDefaultFormat: string => Moment.t = "default";
 
-[@mel.module]
-external momentWithFormat: (string, string) => Moment.t = "moment";
+[@mel.module "moment"]
+external momentWithFormat: (string, string) => Moment.t = "default";
 
-[@mel.module] external momentWithDate: Js.Date.t => Moment.t = "moment";
+[@mel.module "moment"] external momentWithDate: Js.Date.t => Moment.t = "default";
 
-[@mel.module]
-external momentWithFormats: (string, array(string)) => Moment.t = "moment";
+[@mel.module "moment"]
+external momentWithFormats: (string, array(string)) => Moment.t = "default";
 
-[@mel.module] external momentWithTimestampMS: float => Moment.t = "moment";
+[@mel.module "moment"] external momentWithTimestampMS: float => Moment.t = "default";
 
-[@mel.module] external momentWithComponents: list(int) => Moment.t = "moment";
+[@mel.module "moment"] external momentWithComponents: list(int) => Moment.t = "default";
 
 [@mel.module "moment"]
 external momentUtcWithFormats: (string, array(string)) => Moment.t = "utc";
