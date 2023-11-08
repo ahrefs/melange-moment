@@ -37,7 +37,7 @@ module Duration = {
     "as";
 };
 
-[@mel.module "moment"]
+[@mel.module "moment"] [@mel.scope "default"]
 external duration:
   (
     float,
@@ -56,10 +56,10 @@ external duration:
   Duration.t =
   "duration";
 
-[@mel.module "moment"]
+[@mel.module "moment"] [@mel.scope "default"]
 external durationMillis: float => Duration.t = "duration";
 
-[@mel.module "moment"]
+[@mel.module "moment"] [@mel.scope "default"]
 external durationFormat: string => Duration.t = "duration";
 
 module Moment = {
@@ -324,10 +324,10 @@ external momentWithFormats: (string, array(string)) => Moment.t = "default";
 
 [@mel.module "moment"] external momentWithComponents: list(int) => Moment.t = "default";
 
-[@mel.module "moment"]
+[@mel.module "moment"] [@mel.scope "default"]
 external momentUtcWithFormats: (string, array(string)) => Moment.t = "utc";
 
-[@mel.module "moment"]
+[@mel.module "moment"] [@mel.scope "default"]
 external momentUtcDefaultFormat: string => Moment.t = "utc";
 
 let momentWithUnix = (timestamp: int) =>

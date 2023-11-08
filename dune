@@ -1,4 +1,4 @@
-;; we start by ignoring node_modules. if you need to consume an OCaml 
+;; we start by ignoring node_modules. if you need to consume an OCaml
 ;; project from `node_modules`, this should work:
 ;; - remove the `dirs` stanza below
 ;; - add a `(subdir node_modules (dirs only_your_package))`
@@ -10,4 +10,7 @@
  (deps
   (alias_rec test))
  (action
-  (run npx jest)))
+  (setenv
+   NODE_OPTIONS
+   --experimental-vm-modules
+   (run npx jest))))

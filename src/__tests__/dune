@@ -2,5 +2,6 @@
  (target test)
  (alias test)
  (libraries melange-moment melange-jest.jest)
+ (module_systems es6)
  (preprocess
   (pps melange.ppx)))
