@@ -6,7 +6,7 @@ let diff = MomentReShared.diff;
 
 let diffWithPrecision = MomentReShared.diffWithPrecision;
 
-[@mel.module "moment"] [@mel.scope "default"]
+[@mel.module "moment"]
 external duration:
   (
     float,
@@ -25,37 +25,33 @@ external duration:
   Duration.t =
   "duration";
 
-[@mel.module "moment"] [@mel.scope "default"]
+[@mel.module "moment"]
 external durationMillis: float => Duration.t = "duration";
 
-[@mel.module "moment"] [@mel.scope "default"]
+[@mel.module "moment"]
 external durationFormat: string => Duration.t = "duration";
 
 /* parse */
-[@mel.module "moment"] external momentNow: unit => Moment.t = "default";
+[@mel.module] external momentNow: unit => Moment.t = "moment";
+
+[@mel.module] external momentDefaultFormat: string => Moment.t = "moment";
+
+[@mel.module]
+external momentWithFormat: (string, string) => Moment.t = "moment";
+
+[@mel.module] external momentWithDate: Js.Date.t => Moment.t = "moment";
+
+[@mel.module]
+external momentWithFormats: (string, array(string)) => Moment.t = "moment";
+
+[@mel.module] external momentWithTimestampMS: float => Moment.t = "moment";
+
+[@mel.module] external momentWithComponents: list(int) => Moment.t = "moment";
 
 [@mel.module "moment"]
-external momentDefaultFormat: string => Moment.t = "default";
-
-[@mel.module "moment"]
-external momentWithFormat: (string, string) => Moment.t = "default";
-
-[@mel.module "moment"]
-external momentWithDate: Js.Date.t => Moment.t = "default";
-
-[@mel.module "moment"]
-external momentWithFormats: (string, array(string)) => Moment.t = "default";
-
-[@mel.module "moment"]
-external momentWithTimestampMS: float => Moment.t = "default";
-
-[@mel.module "moment"]
-external momentWithComponents: list(int) => Moment.t = "default";
-
-[@mel.module "moment"] [@mel.scope "default"]
 external momentUtcWithFormats: (string, array(string)) => Moment.t = "utc";
 
-[@mel.module "moment"] [@mel.scope "default"]
+[@mel.module "moment"]
 external momentUtcDefaultFormat: string => Moment.t = "utc";
 
 let momentWithUnix = (timestamp: int) =>
