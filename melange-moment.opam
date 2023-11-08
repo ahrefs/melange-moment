@@ -12,6 +12,8 @@ depends: [
   "melange" {>= "2.0.0"}
   "reason"
   "melange-jest" {with-test}
+  "ocaml-lsp-server" {with-test} # todo: use with-dev-setup once opam 2.2 is out
+  "ocamlformat" {= "0.26.0" & with-test} # todo: use with-dev-setup once opam 2.2 is out
   "opam-check-npm-deps" {with-test} # todo: use with-dev-setup once opam 2.2 is out
   "odoc" {with-doc}
 ]

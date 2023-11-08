@@ -1,8 +1,27 @@
 (dirs :standard __tests__)
 
 (library
- (name momentRe)
- (public_name melange-moment)
+ (name momentReShared)
+ (public_name melange-moment.shared)
  (modes melange)
+ (modules momentReShared)
+ (preprocess
+  (pps melange.ppx)))
+
+(library
+ (name momentReCjs)
+ (public_name melange-moment.cjs)
+ (modes melange)
+ (modules momentReCjs)
+ (libraries momentReShared)
+ (preprocess
+  (pps melange.ppx)))
+
+(library
+ (name momentReMjs)
+ (public_name melange-moment.mjs)
+ (modes melange)
+ (modules momentReMjs)
+ (libraries momentReShared)
  (preprocess
   (pps melange.ppx)))
