@@ -1,6 +1,6 @@
 open Jest;
 
-open MomentRe;
+open MomentRe.Cjs;
 
 let isJsDateValid: Js.Date.t => bool = [%mel.raw
   {|
