@@ -10,7 +10,9 @@
  (deps
   (alias_rec test))
  (action
-  (setenv
-   NODE_OPTIONS
-   --experimental-vm-modules
-   (run npx jest))))
+  (progn
+   (run npx jest --config ../../%{project_root}/jest.config.cjs)
+   (setenv
+    NODE_OPTIONS
+    --experimental-vm-modules
+    (run npx jest --config ../../%{project_root}/jest.config.mjs)))))
