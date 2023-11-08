@@ -8,7 +8,7 @@ let isJsDateValid: Js.Date.t => bool = [%mel.raw
 |}
 ];
 
-module MakeTests = (M: MomentReShared.MomentRe) => {
+module Make = (M: MomentReShared.MomentRe) => {
   open M;
 
   /* note that this is an interops test, not tests for moment.js itself, i.e. test comprehensiveness is not the goal */
