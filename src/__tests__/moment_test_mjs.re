@@ -1,1 +1,1 @@
-include Utils.MakeTests(MomentRe.Mjs);
+include Utils.MakeTests(MomentReMjs);

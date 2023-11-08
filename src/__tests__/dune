@@ -1,7 +1,11 @@
 (melange.emit
  (target test)
  (alias test)
- (libraries melange-moment melange-jest.jest)
+ (libraries
+  melange-moment.shared
+  melange-moment.cjs
+  melange-moment.mjs
+  melange-jest.jest)
  (module_systems
   (commonjs cjs)
   (es6 mjs))
