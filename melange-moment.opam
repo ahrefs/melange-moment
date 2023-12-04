@@ -33,3 +33,7 @@ dev-repo: "git+https://github.com/ahrefs/melange-moment.git"
 depexts: [
   ["moment"] {npm-version = "^2.26.0"}
 ]
+
+pin-depends: [
+  ["melange.dev" "git+https://github.com/melange-re/melange#aeb07a4544b35196de76da23454b7f4d32bb3da8"]
+]
