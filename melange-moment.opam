@@ -9,7 +9,7 @@ bug-reports: "https://github.com/ahrefs/melange-moment"
 depends: [
   "dune" {>= "3.9"}
   "ocaml"
-  "melange" {>= "2.0.0"}
+  "melange" {>= "3.0.0"}
   "reason"
   "melange-jest" {with-test}
   "opam-check-npm-deps" {with-test} # todo: use with-dev-setup once opam 2.2 is out
@@ -35,5 +35,5 @@ depexts: [
 ]
 
 pin-depends: [
-  ["melange.dev" "git+https://github.com/melange-re/melange#aeb07a4544b35196de76da23454b7f4d32bb3da8"]
+  ["melange-jest.0.1.1" "https://github.com/melange-community/melange-jest/releases/download/0.1.1/melange-jest-0.1.1.tbz"]
 ]

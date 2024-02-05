@@ -705,7 +705,7 @@ let () =
           test("keepOffset", () =>
             moment("6 Mar 2017 21:22:23 GMT")
             |> Moment.toISOString(~keepOffset=true)
-            |> Js.String.includes(_, ~search="000Z", ())
+            |> Js.String.includes(~search="000Z")
             |> expect
             |> toBe(false)
           );
