@@ -2,7 +2,7 @@
 
 (library
  (name momentReMjs)
- (public_name melange-moment.mjs)
+ (public_name melange-moment)
  (modes melange)
  (modules momentRe)
  (libraries momentReShared)

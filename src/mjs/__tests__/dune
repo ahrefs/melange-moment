@@ -1,7 +1,7 @@
 (melange.emit
  (target test)
  (alias test)
- (libraries melange-moment.mjs makeTests)
+ (libraries melange-moment makeTests)
  (preprocess
   (pps melange.ppx))
  (module_systems
