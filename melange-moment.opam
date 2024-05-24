@@ -9,7 +9,7 @@ bug-reports: "https://github.com/ahrefs/melange-moment"
 depends: [
   "dune" {>= "3.9"}
   "ocaml"
-  "melange" {>= "2.0.0"}
+  "melange" {>= "3.0.0"}
   "reason"
   "melange-jest" {with-test}
   "ocaml-lsp-server" {with-test} # todo: use with-dev-setup once opam 2.2 is out
@@ -34,4 +34,8 @@ build: [
 dev-repo: "git+https://github.com/ahrefs/melange-moment.git"
 depexts: [
   ["moment"] {npm-version = "^2.26.0"}
+]
+
+pin-depends: [
+  ["melange-jest.0.1.1" "https://github.com/melange-community/melange-jest/releases/download/0.1.1/melange-jest-0.1.1.tbz"]
 ]

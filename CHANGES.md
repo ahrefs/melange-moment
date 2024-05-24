@@ -1,3 +1,7 @@
+## Unreleased
+
+Fix tests to work with melange v3: [#7](https://github.com/ahrefs/melange-moment/pull/7/).
+
 ## 0.3.0 (2023-10-20)
 
 Migrated to Melange v2.
