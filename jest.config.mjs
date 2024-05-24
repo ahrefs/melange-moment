@@ -1,5 +1,5 @@
 export default {
-  rootDir: "./_build/default/",
+  rootDir: "./_build/default/src/mjs/__tests__/test/src/mjs",
   moduleFileExtensions: ["js", "mjs"],
-  testMatch: ["**/MomentTestMjs.mjs"],
+  testMatch: ["**/MomentTest.mjs"],
 };

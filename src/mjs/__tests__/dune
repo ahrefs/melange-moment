@@ -1,0 +1,8 @@
+(melange.emit
+ (target test)
+ (alias test)
+ (libraries melange-moment.mjs makeTests)
+ (preprocess
+  (pps melange.ppx))
+ (module_systems
+  (es6 mjs)))

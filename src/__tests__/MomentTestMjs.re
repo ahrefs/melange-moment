@@ -1,1 +1,0 @@
-include MakeTests.Make(MomentReMjs);
