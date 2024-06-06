@@ -12,9 +12,6 @@ depends: [
   "melange" {>= "3.0.0"}
   "reason"
   "melange-jest" {with-test}
-  "ocaml-lsp-server" {with-test} # todo: use with-dev-setup once opam 2.2 is out
-  "ocamlformat" {= "0.26.0" & with-test} # todo: use with-dev-setup once opam 2.2 is out
-  "opam-check-npm-deps" {with-test} # todo: use with-dev-setup once opam 2.2 is out
   "odoc" {with-doc}
 ]
 build: [
@@ -34,8 +31,4 @@ build: [
 dev-repo: "git+https://github.com/ahrefs/melange-moment.git"
 depexts: [
   ["moment"] {npm-version = "^2.26.0"}
-]
-
-pin-depends: [
-  ["melange-jest.0.1.1" "https://github.com/melange-community/melange-jest/releases/download/0.1.1/melange-jest-0.1.1.tbz"]
 ]

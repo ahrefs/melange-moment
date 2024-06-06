@@ -23,6 +23,7 @@ install: ## Install development dependencies
 	yarn
 	opam update
 	opam install -y . --deps-only --with-test
+	opam install -y ocaml-lsp-server ocamlformat opam-check-npm-deps # todo: use with-dev-setup once opam 2.2 is out
 	opam exec opam-check-npm-deps
 
 .PHONY: build
