@@ -1,4 +1,4 @@
-## Unreleased
+## 0.4.0 (2024-06-06)
 
 - Fix tests to work with melange v3: [#7](https://github.com/ahrefs/melange-moment/pull/7/).
 - Add support for ES6, place CommonJS support under `melange-moment.cjs`: [#6](https://github.com/ahrefs/melange-moment/pull/6).
