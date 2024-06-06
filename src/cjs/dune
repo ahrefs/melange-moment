@@ -1,0 +1,11 @@
+(dirs :standard __tests__)
+
+(library
+ (name momentReCjs)
+ (public_name melange-moment.cjs)
+ (modes melange)
+ (modules momentRe)
+ (libraries momentReShared)
+ (wrapped false)
+ (preprocess
+  (pps melange.ppx)))

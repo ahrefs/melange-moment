@@ -1,0 +1,15 @@
+(library
+ (name momentReShared)
+ (public_name melange-moment.shared)
+ (modes melange)
+ (modules momentReShared)
+ (preprocess
+  (pps melange.ppx)))
+
+(library
+ (name makeTests)
+ (modes melange)
+ (modules MakeTests)
+ (libraries melange.belt melange-jest.jest momentReShared)
+ (preprocess
+  (pps melange.ppx)))
