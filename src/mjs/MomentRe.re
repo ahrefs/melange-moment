@@ -50,7 +50,7 @@ external momentWithFormats: (string, array(string)) => Moment.t = "default";
 external momentWithTimestampMS: float => Moment.t = "default";
 
 [@mel.module "moment"]
-external momentWithComponents: list(int) => Moment.t = "default";
+external momentWithComponents: array(int) => Moment.t = "default";
 
 [@mel.module "moment"] [@mel.scope "default"]
 external momentUtcWithFormats: (string, array(string)) => Moment.t = "utc";

@@ -46,7 +46,8 @@ external momentWithFormats: (string, array(string)) => Moment.t = "moment";
 
 [@mel.module] external momentWithTimestampMS: float => Moment.t = "moment";
 
-[@mel.module] external momentWithComponents: list(int) => Moment.t = "moment";
+[@mel.module]
+external momentWithComponents: array(int) => Moment.t = "moment";
 
 [@mel.module "moment"]
 external momentUtcWithFormats: (string, array(string)) => Moment.t = "utc";

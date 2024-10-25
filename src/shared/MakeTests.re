@@ -21,6 +21,19 @@ module Make = (M: MomentReShared.MomentRe) => {
             expect(moment("2017-01-01") |> Moment.clone |> Moment.isValid)
             |> toBe(true)
           );
+          test("#momentWithComponents", () => {
+            expect(
+              {
+                let moment = momentWithComponents([|2017, 1, 14|]);
+                (
+                  moment |> Moment.year,
+                  moment |> Moment.month,
+                  moment |> Moment.date,
+                );
+              },
+            )
+            |> toEqual((2017, 1, 14))
+          });
           test("#mutableSubtract", () =>
             expect(
               Moment.isSame(
