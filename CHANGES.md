@@ -1,3 +1,7 @@
+## Unreleased
+
+- Fix type signature for `momentWithComponents: [#8](https://github.com/ahrefs/melange-moment/pull/8/).
+
 ## 0.4.0 (2024-06-06)
 
 - Fix tests to work with melange v3: [#7](https://github.com/ahrefs/melange-moment/pull/7/).
