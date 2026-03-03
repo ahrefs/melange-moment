@@ -319,26 +319,29 @@ module Duration = {
   [@mel.send] external asYears: t => float = "asYears";
   [@mel.send] external toJSON: t => string = "toJSON";
   [@mel.send] external toISOString: t => string = "toISOString";
-  [@mel.send.pipe: t]
+  [@mel.send]
   external asUnitOfTime:
-    [
-      | `years
-      | `quarters
-      | `months
-      | `weeks
-      | `days
-      | `hours
-      | `minutes
-      | `seconds
-      | `milliseconds
-    ] =>
+    (
+      [
+        | `years
+        | `quarters
+        | `months
+        | `weeks
+        | `days
+        | `hours
+        | `minutes
+        | `seconds
+        | `milliseconds
+      ],
+      t
+    ) =>
     float =
     "as";
 };
 
 module Moment = {
   type t;
-  [@mel.send.pipe: t] external clone: t = "clone";
+  [@mel.send] external clone: t => t = "clone";
   [@mel.send] external mutableAdd: (t, Duration.t) => unit = "add";
   let add = (~duration, moment) => {
     let clone = clone(moment);
@@ -495,32 +498,35 @@ module Moment = {
     mutableSetYear(clone, year);
     clone;
   };
-  [@mel.send.pipe: t]
+  [@mel.send]
   external get:
-    [
-      | `year
-      | `quarter
-      | `month
-      | `week
-      | `day
-      | `date
-      | `hour
-      | `minute
-      | `second
-      | `millisecond
-    ] =>
+    (
+      [
+        | `year
+        | `quarter
+        | `month
+        | `week
+        | `day
+        | `date
+        | `hour
+        | `minute
+        | `second
+        | `millisecond
+      ],
+      t
+    ) =>
     int =
     "get";
-  [@mel.send.pipe: t] external millisecond: int = "millisecond";
-  [@mel.send.pipe: t] external second: int = "second";
-  [@mel.send.pipe: t] external minute: int = "minute";
-  [@mel.send.pipe: t] external hour: int = "hour";
-  [@mel.send.pipe: t] external day: int = "day";
-  [@mel.send.pipe: t] external date: int = "date";
-  [@mel.send.pipe: t] external week: int = "week";
-  [@mel.send.pipe: t] external month: int = "month";
-  [@mel.send.pipe: t] external year: int = "year";
-  [@mel.send.pipe: t] external weekday: int = "weekday";
+  [@mel.send] external millisecond: t => int = "millisecond";
+  [@mel.send] external second: t => int = "second";
+  [@mel.send] external minute: t => int = "minute";
+  [@mel.send] external hour: t => int = "hour";
+  [@mel.send] external day: t => int = "day";
+  [@mel.send] external date: t => int = "date";
+  [@mel.send] external week: t => int = "week";
+  [@mel.send] external month: t => int = "month";
+  [@mel.send] external year: t => int = "year";
+  [@mel.send] external weekday: t => int = "weekday";
   [@mel.send] external isValid: t => bool = "isValid";
   [@mel.send] external isBefore: (t, t) => bool = "isBefore";
   [@mel.send] external isAfter: (t, t) => bool = "isAfter";
@@ -552,11 +558,11 @@ module Moment = {
   [@mel.send] external isDST: t => bool = "isDST";
   [@mel.send] external isLeapYear: t => bool = "isLeapYear";
   /* display */
-  [@mel.send.pipe: t] external format: string => string = "format";
-  [@mel.send.pipe: t] external defaultFormat: string = "format";
-  [@mel.send.pipe: t] external utc: string => t = "utc";
-  [@mel.send.pipe: t] external defaultUtc: t = "utc";
-  [@mel.send.pipe: t] external mutableLocale: string => unit = "locale";
+  [@mel.send] external format: (string, t) => string = "format";
+  [@mel.send] external defaultFormat: t => string = "format";
+  [@mel.send] external utc: (string, t) => t = "utc";
+  [@mel.send] external defaultUtc: t => t = "utc";
+  [@mel.send] external mutableLocale: (string, t) => unit = "locale";
   let locale = (locale, moment) => {
     let clone = clone(moment);
     mutableLocale(locale, clone);
@@ -577,8 +583,8 @@ module Moment = {
   let toJSON = moment => toJSON(moment) |> Js.Null.toOption;
   [@mel.send] external toDate: t => Js.Date.t = "toDate";
   [@mel.send] external toUnix: t => int = "unix";
-  [@mel.send.pipe: t]
-  external toISOString: (~keepOffset: bool=?) => string = "toISOString";
+  [@mel.send]
+  external toISOString: (~keepOffset: bool=?, t) => string = "toISOString";
 };
 
 [@mel.send]
