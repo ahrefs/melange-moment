@@ -320,8 +320,9 @@ module Duration = {
   [@mel.send] external toJSON: t => string = "toJSON";
   [@mel.send] external toISOString: t => string = "toISOString";
   [@mel.send]
-  external asUnitOfTime:
+  external asUnitOfTimeRaw:
     (
+      t,
       [
         | `years
         | `quarters
@@ -332,11 +333,11 @@ module Duration = {
         | `minutes
         | `seconds
         | `milliseconds
-      ],
-      t
+      ]
     ) =>
     float =
     "as";
+  let asUnitOfTime = (unit, duration) => asUnitOfTimeRaw(duration, unit);
 };
 
 module Moment = {
@@ -499,8 +500,9 @@ module Moment = {
     clone;
   };
   [@mel.send]
-  external get:
+  external getRaw:
     (
+      t,
       [
         | `year
         | `quarter
@@ -512,11 +514,11 @@ module Moment = {
         | `minute
         | `second
         | `millisecond
-      ],
-      t
+      ]
     ) =>
     int =
     "get";
+  let get = (unit, moment) => getRaw(moment, unit);
   [@mel.send] external millisecond: t => int = "millisecond";
   [@mel.send] external second: t => int = "second";
   [@mel.send] external minute: t => int = "minute";
@@ -558,11 +560,14 @@ module Moment = {
   [@mel.send] external isDST: t => bool = "isDST";
   [@mel.send] external isLeapYear: t => bool = "isLeapYear";
   /* display */
-  [@mel.send] external format: (string, t) => string = "format";
+  [@mel.send] external formatRaw: (t, string) => string = "format";
+  let format = (format, moment) => formatRaw(moment, format);
   [@mel.send] external defaultFormat: t => string = "format";
-  [@mel.send] external utc: (string, t) => t = "utc";
+  [@mel.send] external utcRaw: (t, string) => t = "utc";
+  let utc = (format, moment) => utcRaw(moment, format);
   [@mel.send] external defaultUtc: t => t = "utc";
-  [@mel.send] external mutableLocale: (string, t) => unit = "locale";
+  [@mel.send] external mutableLocaleRaw: (t, string) => unit = "locale";
+  let mutableLocale = (locale, moment) => mutableLocaleRaw(moment, locale);
   let locale = (locale, moment) => {
     let clone = clone(moment);
     mutableLocale(locale, clone);
@@ -584,7 +589,9 @@ module Moment = {
   [@mel.send] external toDate: t => Js.Date.t = "toDate";
   [@mel.send] external toUnix: t => int = "unix";
   [@mel.send]
-  external toISOString: (~keepOffset: bool=?, t) => string = "toISOString";
+  external toISOStringRaw: (t, ~keepOffset: bool=?) => string = "toISOString";
+  let toISOString = (~keepOffset=?, moment) =>
+    toISOStringRaw(moment, ~keepOffset?);
 };
 
 [@mel.send]
