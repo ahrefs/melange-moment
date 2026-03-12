@@ -300,52 +300,55 @@ module type MomentRe = {
 /* duration */
 module Duration = {
   type t;
-  [@mel.send] external humanize: t => string = "humanize";
-  [@mel.send] external milliseconds: t => int = "milliseconds";
-  [@mel.send] external asMilliseconds: t => float = "asMilliseconds";
-  [@mel.send] external seconds: t => int = "seconds";
-  [@mel.send] external asSeconds: t => float = "asSeconds";
-  [@mel.send] external minutes: t => int = "minutes";
-  [@mel.send] external asMinutes: t => float = "asMinutes";
-  [@mel.send] external hours: t => int = "hours";
-  [@mel.send] external asHours: t => float = "asHours";
-  [@mel.send] external days: t => int = "days";
-  [@mel.send] external asDays: t => float = "asDays";
-  [@mel.send] external weeks: t => int = "weeks";
-  [@mel.send] external asWeeks: t => float = "asWeeks";
-  [@mel.send] external months: t => int = "months";
-  [@mel.send] external asMonths: t => float = "asMonths";
-  [@mel.send] external years: t => int = "years";
-  [@mel.send] external asYears: t => float = "asYears";
-  [@mel.send] external toJSON: t => string = "toJSON";
-  [@mel.send] external toISOString: t => string = "toISOString";
-  [@mel.send.pipe: t]
+  [@mel.send] external humanize: ([@mel.this] t) => string = "humanize";
+  [@mel.send] external milliseconds: ([@mel.this] t) => int = "milliseconds";
+  [@mel.send] external asMilliseconds: ([@mel.this] t) => float = "asMilliseconds";
+  [@mel.send] external seconds: ([@mel.this] t) => int = "seconds";
+  [@mel.send] external asSeconds: ([@mel.this] t) => float = "asSeconds";
+  [@mel.send] external minutes: ([@mel.this] t) => int = "minutes";
+  [@mel.send] external asMinutes: ([@mel.this] t) => float = "asMinutes";
+  [@mel.send] external hours: ([@mel.this] t) => int = "hours";
+  [@mel.send] external asHours: ([@mel.this] t) => float = "asHours";
+  [@mel.send] external days: ([@mel.this] t) => int = "days";
+  [@mel.send] external asDays: ([@mel.this] t) => float = "asDays";
+  [@mel.send] external weeks: ([@mel.this] t) => int = "weeks";
+  [@mel.send] external asWeeks: ([@mel.this] t) => float = "asWeeks";
+  [@mel.send] external months: ([@mel.this] t) => int = "months";
+  [@mel.send] external asMonths: ([@mel.this] t) => float = "asMonths";
+  [@mel.send] external years: ([@mel.this] t) => int = "years";
+  [@mel.send] external asYears: ([@mel.this] t) => float = "asYears";
+  [@mel.send] external toJSON: ([@mel.this] t) => string = "toJSON";
+  [@mel.send] external toISOString: ([@mel.this] t) => string = "toISOString";
+  [@mel.send]
   external asUnitOfTime:
-    [
-      | `years
-      | `quarters
-      | `months
-      | `weeks
-      | `days
-      | `hours
-      | `minutes
-      | `seconds
-      | `milliseconds
-    ] =>
+    (
+      [
+        | `years
+        | `quarters
+        | `months
+        | `weeks
+        | `days
+        | `hours
+        | `minutes
+        | `seconds
+        | `milliseconds
+      ],
+      [@mel.this] t
+    ) =>
     float =
     "as";
 };
 
 module Moment = {
   type t;
-  [@mel.send.pipe: t] external clone: t = "clone";
-  [@mel.send] external mutableAdd: (t, Duration.t) => unit = "add";
+  [@mel.send] external clone: ([@mel.this] t) => t = "clone";
+  [@mel.send] external mutableAdd: ([@mel.this] t, Duration.t) => unit = "add";
   let add = (~duration, moment) => {
     let clone = clone(moment);
     mutableAdd(clone, duration);
     clone;
   };
-  [@mel.send] external mutableSubtract: (t, Duration.t) => unit = "subtract";
+  [@mel.send] external mutableSubtract: ([@mel.this] t, Duration.t) => unit = "subtract";
   let subtract = (~duration, moment) => {
     let clone = clone(moment);
     mutableSubtract(clone, duration);
@@ -354,7 +357,7 @@ module Moment = {
   [@mel.send]
   external mutableStartOf:
     (
-      t,
+      [@mel.this] t,
       [
         | `year
         | `quarter
@@ -378,7 +381,7 @@ module Moment = {
   [@mel.send]
   external mutableEndOf:
     (
-      t,
+      [@mel.this] t,
       [
         | `year
         | `quarter
@@ -399,135 +402,138 @@ module Moment = {
     mutableEndOf(clone, timeUnit);
     clone;
   };
-  [@mel.send] external mutableSetMillisecond: (t, int) => unit = "millisecond";
+  [@mel.send] external mutableSetMillisecond: ([@mel.this] t, int) => unit = "millisecond";
   let setMillisecond = (millisecond, moment) => {
     let clone = clone(moment);
     mutableSetMillisecond(clone, millisecond);
     clone;
   };
-  [@mel.send] external mutableSetSecond: (t, int) => unit = "second";
+  [@mel.send] external mutableSetSecond: ([@mel.this] t, int) => unit = "second";
   let setSecond = (second, moment) => {
     let clone = clone(moment);
     mutableSetSecond(clone, second);
     clone;
   };
-  [@mel.send] external mutableSetMinute: (t, int) => unit = "minute";
+  [@mel.send] external mutableSetMinute: ([@mel.this] t, int) => unit = "minute";
   let setMinute = (minute, moment) => {
     let clone = clone(moment);
     mutableSetMinute(clone, minute);
     clone;
   };
-  [@mel.send] external mutableSetHour: (t, int) => unit = "hour";
+  [@mel.send] external mutableSetHour: ([@mel.this] t, int) => unit = "hour";
   let setHour = (hour, moment) => {
     let clone = clone(moment);
     mutableSetHour(clone, hour);
     clone;
   };
-  [@mel.send] external mutableSetDate: (t, int) => unit = "date";
+  [@mel.send] external mutableSetDate: ([@mel.this] t, int) => unit = "date";
   let setDate = (date, moment) => {
     let clone = clone(moment);
     mutableSetDate(clone, date);
     clone;
   };
-  [@mel.send] external mutableSetDay: (t, int) => unit = "day";
+  [@mel.send] external mutableSetDay: ([@mel.this] t, int) => unit = "day";
   let setDay = (day, moment) => {
     let clone = clone(moment);
     mutableSetDay(clone, day);
     clone;
   };
-  [@mel.send] external mutableSetWeekday: (t, int) => unit = "weekday";
+  [@mel.send] external mutableSetWeekday: ([@mel.this] t, int) => unit = "weekday";
   let setWeekday = (weekday, moment) => {
     let clone = clone(moment);
     mutableSetWeekday(clone, weekday);
     clone;
   };
-  [@mel.send] external mutableSetIsoWeekday: (t, int) => unit = "isoWeekday";
+  [@mel.send] external mutableSetIsoWeekday: ([@mel.this] t, int) => unit = "isoWeekday";
   let setIsoWeekday = (isoWeekday, moment) => {
     let clone = clone(moment);
     mutableSetIsoWeekday(clone, isoWeekday);
     clone;
   };
-  [@mel.send] external mutableSetDayOfYear: (t, int) => unit = "dayOfYear";
+  [@mel.send] external mutableSetDayOfYear: ([@mel.this] t, int) => unit = "dayOfYear";
   let setDayOfYear = (dayOfYear, moment) => {
     let clone = clone(moment);
     mutableSetDayOfYear(clone, dayOfYear);
     clone;
   };
-  [@mel.send] external mutableSetWeek: (t, int) => unit = "week";
+  [@mel.send] external mutableSetWeek: ([@mel.this] t, int) => unit = "week";
   let setWeek = (week, moment) => {
     let clone = clone(moment);
     mutableSetWeek(clone, week);
     clone;
   };
-  [@mel.send] external mutableSetIsoWeek: (t, int) => unit = "isoWeek";
+  [@mel.send] external mutableSetIsoWeek: ([@mel.this] t, int) => unit = "isoWeek";
   let setIsoWeek = (isoWeek, moment) => {
     let clone = clone(moment);
     mutableSetIsoWeek(clone, isoWeek);
     clone;
   };
-  [@mel.send] external mutableSetQuarter: (t, int) => unit = "quarter";
+  [@mel.send] external mutableSetQuarter: ([@mel.this] t, int) => unit = "quarter";
   let setQuarter = (quarter, moment) => {
     let clone = clone(moment);
     mutableSetQuarter(clone, quarter);
     clone;
   };
-  [@mel.send] external mutableSetWeekYear: (t, int) => unit = "weekYear";
+  [@mel.send] external mutableSetWeekYear: ([@mel.this] t, int) => unit = "weekYear";
   let setWeekYear = (weekYear, moment) => {
     let clone = clone(moment);
     mutableSetWeekYear(clone, weekYear);
     clone;
   };
-  [@mel.send] external mutableSetIsoWeekYear: (t, int) => unit = "isoWeekYear";
+  [@mel.send] external mutableSetIsoWeekYear: ([@mel.this] t, int) => unit = "isoWeekYear";
   let setIsoWeekYear = (isoWeekYear, moment) => {
     let clone = clone(moment);
     mutableSetWeekYear(clone, isoWeekYear);
     clone;
   };
-  [@mel.send] external mutableSetMonth: (t, int) => unit = "month";
+  [@mel.send] external mutableSetMonth: ([@mel.this] t, int) => unit = "month";
   let setMonth = (month, moment) => {
     let clone = clone(moment);
     mutableSetMonth(clone, month);
     clone;
   };
-  [@mel.send] external mutableSetYear: (t, int) => unit = "year";
+  [@mel.send] external mutableSetYear: ([@mel.this] t, int) => unit = "year";
   let setYear = (year, moment) => {
     let clone = clone(moment);
     mutableSetYear(clone, year);
     clone;
   };
-  [@mel.send.pipe: t]
+  [@mel.send]
   external get:
-    [
-      | `year
-      | `quarter
-      | `month
-      | `week
-      | `day
-      | `date
-      | `hour
-      | `minute
-      | `second
-      | `millisecond
-    ] =>
+    (
+      [
+        | `year
+        | `quarter
+        | `month
+        | `week
+        | `day
+        | `date
+        | `hour
+        | `minute
+        | `second
+        | `millisecond
+      ],
+      [@mel.this] t
+    ) =>
     int =
     "get";
-  [@mel.send.pipe: t] external millisecond: int = "millisecond";
-  [@mel.send.pipe: t] external second: int = "second";
-  [@mel.send.pipe: t] external minute: int = "minute";
-  [@mel.send.pipe: t] external hour: int = "hour";
-  [@mel.send.pipe: t] external day: int = "day";
-  [@mel.send.pipe: t] external date: int = "date";
-  [@mel.send.pipe: t] external week: int = "week";
-  [@mel.send.pipe: t] external month: int = "month";
-  [@mel.send.pipe: t] external year: int = "year";
-  [@mel.send.pipe: t] external weekday: int = "weekday";
-  [@mel.send] external isValid: t => bool = "isValid";
-  [@mel.send] external isBefore: (t, t) => bool = "isBefore";
-  [@mel.send] external isAfter: (t, t) => bool = "isAfter";
+  [@mel.send] external millisecond: ([@mel.this] t) => int = "millisecond";
+  [@mel.send] external second: ([@mel.this] t) => int = "second";
+  [@mel.send] external minute: ([@mel.this] t) => int = "minute";
+  [@mel.send] external hour: ([@mel.this] t) => int = "hour";
+  [@mel.send] external day: ([@mel.this] t) => int = "day";
+  [@mel.send] external date: ([@mel.this] t) => int = "date";
+  [@mel.send] external week: ([@mel.this] t) => int = "week";
+  [@mel.send] external month: ([@mel.this] t) => int = "month";
+  [@mel.send] external year: ([@mel.this] t) => int = "year";
+  [@mel.send] external weekday: ([@mel.this] t) => int = "weekday";
+  [@mel.send] external isValid: ([@mel.this] t) => bool = "isValid";
+  [@mel.send] external isBefore: ([@mel.this] t, t) => bool = "isBefore";
+  [@mel.send] external isAfter: ([@mel.this] t, t) => bool = "isAfter";
   [@mel.send]
   external isAfterWithGranularity:
     (
-      t,
+      [@mel.this] t,
       t,
       [ | `year | `month | `week | `isoWeek | `day | `hour | `minute | `second]
     ) =>
@@ -536,55 +542,55 @@ module Moment = {
   [@mel.send]
   external isSameOrBeforeWithGranularity:
     (
-      t,
+      [@mel.this] t,
       t,
       [ | `year | `month | `week | `isoWeek | `day | `hour | `minute | `second]
     ) =>
     bool =
     "isSameOrBefore";
-  [@mel.send] external isSame: (t, t) => bool = "isSame";
+  [@mel.send] external isSame: ([@mel.this] t, t) => bool = "isSame";
   [@mel.send]
-  external isSameWithGranularity: (t, t, [ | `year | `month | `day]) => bool =
+  external isSameWithGranularity: ([@mel.this] t, t, [ | `year | `month | `day]) => bool =
     "isSame";
-  [@mel.send] external isSameOrBefore: (t, t) => bool = "isSameOrBefore";
-  [@mel.send] external isSameOrAfter: (t, t) => bool = "isSameOrAfter";
-  [@mel.send] external isBetween: (t, t, t) => bool = "isBetween";
-  [@mel.send] external isDST: t => bool = "isDST";
-  [@mel.send] external isLeapYear: t => bool = "isLeapYear";
+  [@mel.send] external isSameOrBefore: ([@mel.this] t, t) => bool = "isSameOrBefore";
+  [@mel.send] external isSameOrAfter: ([@mel.this] t, t) => bool = "isSameOrAfter";
+  [@mel.send] external isBetween: ([@mel.this] t, t, t) => bool = "isBetween";
+  [@mel.send] external isDST: ([@mel.this] t) => bool = "isDST";
+  [@mel.send] external isLeapYear: ([@mel.this] t) => bool = "isLeapYear";
   /* display */
-  [@mel.send.pipe: t] external format: string => string = "format";
-  [@mel.send.pipe: t] external defaultFormat: string = "format";
-  [@mel.send.pipe: t] external utc: string => t = "utc";
-  [@mel.send.pipe: t] external defaultUtc: t = "utc";
-  [@mel.send.pipe: t] external mutableLocale: string => unit = "locale";
+  [@mel.send] external format: (string, [@mel.this] t) => string = "format";
+  [@mel.send] external defaultFormat: ([@mel.this] t) => string = "format";
+  [@mel.send] external utc: (string, [@mel.this] t) => t = "utc";
+  [@mel.send] external defaultUtc: ([@mel.this] t) => t = "utc";
+  [@mel.send] external mutableLocale: (string, [@mel.this] t) => unit = "locale";
   let locale = (locale, moment) => {
     let clone = clone(moment);
     mutableLocale(locale, clone);
     clone;
   };
   [@mel.send]
-  external fromNow: (t, ~withoutSuffix: option(bool)) => string = "fromNow";
+  external fromNow: ([@mel.this] t, ~withoutSuffix: option(bool)) => string = "fromNow";
   [@mel.send]
-  external fromMoment: (t, ~other: t, ~format: option(string)) => string =
+  external fromMoment: ([@mel.this] t, ~other: t, ~format: option(string)) => string =
     "from";
   [@mel.send]
-  external toNow: (t, ~withoutSuffix: option(bool)) => string = "toNow";
+  external toNow: ([@mel.this] t, ~withoutSuffix: option(bool)) => string = "toNow";
   [@mel.send]
-  external toMoment: (t, ~other: t, ~format: string) => string = "to";
-  [@mel.send] external valueOf: t => float = "valueOf";
-  [@mel.send] external daysInMonth: t => int = "daysInMonth";
-  [@mel.send] external toJSON: t => Js.null(string) = "toJSON";
+  external toMoment: ([@mel.this] t, ~other: t, ~format: string) => string = "to";
+  [@mel.send] external valueOf: ([@mel.this] t) => float = "valueOf";
+  [@mel.send] external daysInMonth: ([@mel.this] t) => int = "daysInMonth";
+  [@mel.send] external toJSON: ([@mel.this] t) => Js.null(string) = "toJSON";
   let toJSON = moment => toJSON(moment) |> Js.Null.toOption;
-  [@mel.send] external toDate: t => Js.Date.t = "toDate";
-  [@mel.send] external toUnix: t => int = "unix";
-  [@mel.send.pipe: t]
-  external toISOString: (~keepOffset: bool=?) => string = "toISOString";
+  [@mel.send] external toDate: ([@mel.this] t) => Js.Date.t = "toDate";
+  [@mel.send] external toUnix: ([@mel.this] t) => int = "unix";
+  [@mel.send]
+  external toISOString: (~keepOffset: bool=?, [@mel.this] t) => string = "toISOString";
 };
 
 [@mel.send]
 external diff:
   (
-    Moment.t,
+    [@mel.this] Moment.t,
     Moment.t,
     [
       | `years
@@ -604,7 +610,7 @@ external diff:
 [@mel.send]
 external diffWithPrecision:
   (
-    Moment.t,
+    [@mel.this] Moment.t,
     Moment.t,
     [
       | `years
